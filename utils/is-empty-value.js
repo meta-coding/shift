@@ -2,19 +2,19 @@
 var Immutable = require('immutable');
 
 export default function(value: any) : bool {
-	if(value == null){
+	if (value == null) {
 		return true;
 	}
 
-	if(value === ''){
+	if (value === '') {
 		return true;
 	}
 
-	if(value instanceof Array && value.length === 0){
+	if (value instanceof Array && value.length === 0) {
 		return true;
 	}
 
-	if(value instanceof Immutable.Iterable){
+	if (value instanceof Immutable.Iterable) {
 		return value.size === 0;
 	}
 
