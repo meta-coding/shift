@@ -1,8 +1,8 @@
 [ignore]
-.*/node_modules/.*
+.*/node_modules/webpack/.*
 [include]
 
 [libs]
-
+./libs
 [version]
 0.13.1
