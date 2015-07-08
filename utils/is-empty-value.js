@@ -1,5 +1,5 @@
 /* @flow */
-var Immutable = require('immutable');
+import Immutable from 'immutable';
 
 export default function(value: any) : bool {
 	if (value == null) {
