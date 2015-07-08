@@ -1,7 +1,5 @@
 [ignore]
 .*/node_modules/webpack/.*
-[include]
-
 [libs]
 ./libs
 [version]
