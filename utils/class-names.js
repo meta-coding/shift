@@ -1,8 +1,5 @@
-/**
- * @flow
- */
-
-function mergeNames(...names: string[]) : string {
+/* @flow */
+export function mergeNames(...names: string[]) : string {
 	var classNames = {};
 	var classes, i, n;
 	var j, m;
@@ -24,15 +21,10 @@ function mergeNames(...names: string[]) : string {
 	return Object.keys(classNames).join(' ');
 }
 
-function conditionalAppend(className: string, errorClassName: string, append: boolean) : string {
+export function conditionalAppend(className: string, errorClassName: string, append: boolean) : string {
 	if (!append) {
 		return className;
 	}
 
 	return mergeNames(className, errorClassName);
 }
-
-export default {
-	merge: mergeNames,
-	conditionalAppend,
-};

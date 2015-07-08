@@ -1,20 +1,14 @@
+/* @flow */
+
+export {isEmptyValue} from './is-empty-value.js';
+
+import * as classNames from './class-names.js';
+
+export {classNames};
+
+export {mergeNames as mergeClassNames} from './class-names.js';
+
 /**
- * @flow
- */
-
-import isEmptyValue from './is-empty-value.js';
-import classNames from './class-names.js';
-
-export default {
-	isEmptyValue,
-	classNames,
-	/**
-	 * @deprecated Use classNames.merge instead
-	 */
-	mergeClassNames: classNames.merge,
-
-	/**
-	 * @deprecated Use classNames.conditionalAppend instead
-	 */
-	maybeAppendErrorClassNames: classNames.conditionalAppend,
-};
+* @deprecated Use classNames.conditionalAppend instead
+*/
+export {conditionalAppend as maybeAppendErrorClassNames} from './class-names.js';

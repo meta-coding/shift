@@ -1,7 +1,7 @@
 /* @flow */
 import Immutable from 'immutable';
 
-export default function(value: any) : bool {
+export function isEmptyValue(value: any) : bool {
 	if (value == null) {
 		return true;
 	}

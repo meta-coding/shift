@@ -1,5 +1,5 @@
-/*global describe it */
-import isEmptyValue from '../../utils/is-empty-value';
+/* @flow */
+import {isEmptyValue} from '../../utils/is-empty-value.js';
 
 import {assert} from 'chai';
 

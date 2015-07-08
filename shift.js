@@ -1,9 +1,5 @@
-/**
- * @flow
- */
+/* @flow */
 
-import utils from './utils';
+import * as utils from './utils';
 
-export default {
-    utils,
-};
+export {utils};
