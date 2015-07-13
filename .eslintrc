@@ -148,6 +148,10 @@
         "space-before-blocks": [
             2,
             "always"
+        ],
+        "complexity": [
+            2,
+            10
         ]
     },
     "env": {
