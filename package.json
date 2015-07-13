@@ -2,7 +2,7 @@
   "name": "shift",
   "version": "0.1.0",
   "description": "Flow is a library for generating read and write scenario UI using React",
-  "main": "shift.js",
+  "main": "dist/shift.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --opts test/mocha.opts",
     "test-spec": "./node_modules/mocha/bin/mocha --opts test/mocha.opts --reporter spec",
