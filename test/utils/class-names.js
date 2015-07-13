@@ -27,6 +27,10 @@ describe('Utils', () => {
 				var more = 'second-class first-class';
 				assert.equal(original + ' ' + more.replace(' ' + original, ''), classNames.mergeNames(original, more), 'Should merge class names in order, removing duplicates');
 			});
+
+			it('Should de-dupe class names in single argument', () => {
+				assert.equal('asdf', classNames.mergeNames('asdf asdf'), 'Should remove duplicates in single argument');
+			});
 		});
 
 		describe('conditionalAppend', () => {

@@ -39,11 +39,11 @@ describe('Utils', () => {
 			assert.isTrue(isEmptyValue(Immutable.List()), 'empty immutable list should be considered empty');
 		});
 
-		it('Should return false on an empty immutable map', () => {
+		it('Should return false on a non-empty immutable map', () => {
 			assert.isFalse(isEmptyValue(Immutable.Map({a: false})), 'non empty immutable map should be considered not empty');
 		});
 
-		it('Should return false on an empty immutable list', () => {
+		it('Should return false on a non-empty immutable list', () => {
 			assert.isFalse(isEmptyValue(Immutable.List([0])), 'non empty immutable list should be considered not empty');
 		});
 
