@@ -14,8 +14,8 @@
  * commands to the editor. In the end, this results in a similiar API
  * usage in the form, but very different implementation details here.
  *
- * @TODO: Do we need to store information about entire selection ranges to support something like
- * `select` in our editors?
+ * @TODO: Do we need to store information about entire selection ranges
+ * to support something like `select` in our editors?
  */
 var React = require('react');
 
