@@ -5,7 +5,7 @@ module.exports = {
 	entry: path.join(__dirname, 'shift.js'),
 	output: {
 		path: path.join(__dirname, 'dist'),
-		filename: 'shift.js',
+		filename: 'shift.umd.js',
 		library: 'shift',
 		libraryTarget: 'umd',
 	},
