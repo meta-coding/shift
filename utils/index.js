@@ -6,6 +6,9 @@ import * as classNames from './class-names.js';
 
 export {classNames};
 
+/**
+ * @deprecated Use classNames.mergeNames instead
+ */
 export {mergeNames as mergeClassNames} from './class-names.js';
 
 /**
