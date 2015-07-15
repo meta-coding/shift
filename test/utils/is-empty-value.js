@@ -12,7 +12,8 @@ describe('Utils', () => {
 		});
 
 		it('Should return true on undefined', () => {
-			assert.isTrue(isEmptyValue(), 'undefined should be considered an empty value');
+			var undef;
+			assert.isTrue(isEmptyValue(undef), 'undefined should be considered an empty value');
 		});
 
 		it('Should return true on an empty string', () => {
