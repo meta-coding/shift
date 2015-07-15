@@ -4,11 +4,11 @@
   "description": "Flow is a library for generating read and write scenario UI using React",
   "main": "dist/shift.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --opts test/mocha.opts",
-    "test-spec": "./node_modules/mocha/bin/mocha --opts test/mocha.opts --reporter spec",
-    "test-watch": "./node_modules/mocha/bin/mocha --opts test/mocha.opts -w",
+    "test": "NODE_PATH=./deps/node_modules ./node_modules/mocha/bin/mocha --opts test/mocha.opts",
+    "test-spec": "NODE_PATH=./deps/node_modules ./node_modules/mocha/bin/mocha --opts test/mocha.opts --reporter spec",
+    "test-watch": "NODE_PATH=./deps/node_modules ./node_modules/mocha/bin/mocha --opts test/mocha.opts -w",
     "lint": "./node_modules/eslint/bin/eslint.js .",
-    "build": "./node_modules/webpack/bin/webpack.js --config webpack.config.js"
+    "build": "./deps/node_modules/webpack/bin/webpack.js --config webpack.config.js"
   },
   "keywords": [
     "react",
@@ -17,19 +17,11 @@
   "author": "Kaare Hoff Skovgaard <kaare@kaareskovgaard.net>",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "babel": "^5.6.14",
-    "babel-core": "^5.6.15",
-    "babel-eslint": "^3.1.20",
-    "babel-loader": "^5.3.1",
-    "chai": "^3.0.0",
+    "babel": "^5.6.23",
+    "babel-eslint": "^3.1.23",
     "eslint": "^0.24.0",
-    "eslint-plugin-react": "^2.6.4",
-    "immutable": "^3.7.4",
-    "mocha": "^2.2.5",
-    "node-libs-browser": "^0.5.2",
-    "react": "^0.13.3",
-    "react-immutable-proptypes": "^1.0.0",
-    "webpack": "^1.10.1"
+    "eslint-plugin-react": "^2.7.0",
+    "mocha": "^2.2.5"
   },
   "repository": {
     "type": "git",

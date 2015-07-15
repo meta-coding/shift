@@ -1,5 +1,3 @@
-/* @flow */
-
 type callback = () => void;
 
 declare var describe : (context: string, fn: callback) => void;

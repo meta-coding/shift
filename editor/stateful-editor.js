@@ -19,40 +19,56 @@
  */
 var React = require('react');
 
+// ignore unused and undef for the type definition
+/*eslint-disable*/
+type ReactClass<D, P, S, C: ReactComponent<D, P, S>> = Class<C>;
+/*eslint-enable*/
+
 type State = {
 	value: any,
 	initialValue: any,
 	isFocused: bool,
 };
 
-var StatefulEditor = React.createClass({
-	mixins: [React.addons.PureRenderMixin],
-	propTypes: {
-		field: React.PropTypes.string,
-		// What is the prop type for something that can be instanciated via
-		// React.createElement?
-		Component: React.PropTypes.any.isRequired,
-		editorProps: React.PropTypes.any,
-		onFocusNext: React.PropTypes.func.isRequired,
-		onFocusPrev: React.PropTypes.func.isRequired,
-		onFocus: React.PropTypes.func.isRequired,
-		onBlur: React.PropTypes.func.isRequired,
-		isFocused: React.PropTypes.bool.isRequired,
-		value: React.PropTypes.any,
-	},
+type callback = () => void;
+
+var undef;
+
+type DefaultProps = {
+	value: any,
+	editorProps: any,
+};
+
+type Props = {
+	editorProps: any,
+	Component: ReactClass,
+	value: any,
+	isFocused: bool,
+	onFocusNext: callback,
+	onFocusPrev: callback,
+	onFocus: callback,
+	onBlur: callback,
+	onChange: (value: any) => void,
+};
+
+class StatefulEditor extends React.Component<DefaultProps, Props, State> {
+	constructor(props: Props) {
+		super(props);
+		this.state = this.getInitialState();
+	}
 	getInitialState() : State {
 		return {
 			value: this.props.value,
 			initialValue: this.props.value,
 			isFocused: this.props.isFocused,
 		};
-	},
+	}
 	componentDidMount() : void {
 		if (this.props.isFocused) {
 			this.refs.editor.focus();
 		}
-	},
-	componentWillUpdate(nextProps : {value: any, isFocused: bool}, nextState: State) : void {
+	}
+	componentWillReceiveProps(nextProps : {value: any, isFocused: bool}) : void {
 		// Fixup the value
 		if (this.state.value !== nextProps.value) {
 			this.refs.editor.setValue(nextProps.value);
@@ -62,43 +78,43 @@ var StatefulEditor = React.createClass({
 		}
 
 		// Fixup the focused state
-		if (this.state.isFocused !== nextState.isFocused && this.state.isFocused !== nextProps.isFocused) {
-			// Store the newly commanded state
-			this.setState({
-				isFocused: nextProps.isFocused,
-			});
-
-			// Editor, do our bidding, please
-			if (nextProps.isFocused) {
-				this.refs.editor.focus();
-			} else {
-				this.refs.editor.blur();
-			}
-		}
-	},
+		// if (this.state.isFocused !== nextState.isFocused && this.state.isFocused !== nextProps.isFocused) {
+		// 	// Store the newly commanded state
+		// 	this.setState({
+		// 		isFocused: nextProps.isFocused,
+		// 	});
+		//
+		// 	// Editor, do our bidding, please
+		// 	if (nextProps.isFocused) {
+		// 		this.refs.editor.focus();
+		// 	} else {
+		// 		this.refs.editor.blur();
+		// 	}
+		// }
+	}
 	valueChanged(prevValue : any, nextValue : any) {
 		this.setState({
 			value: nextValue,
 		}, function() {
-			this.onChange(nextValue);
+			this.props.onChange(nextValue);
 		});
-	},
+	}
 	onFocus() : any {
 		this.setState({
 			isFocused: true,
 		}, function() {
 			this.props.onFocus();
 		});
-	},
+	}
 	onBlur() : any {
 		this.setState({
 			isFocused: false,
 		}, function() {
 			this.props.onBlur();
 		});
-	},
+	}
 	render() : React.Element {
-		var props = this.editorProps;
+		var props = this.props.editorProps;
 		if (props == null) {
 			props = {};
 		}
@@ -113,10 +129,27 @@ var StatefulEditor = React.createClass({
 			onBlur={this.onBlur}
 			onChange={this.valueChanged}
 		/>;
-	},
+	}
 	select() : void {
 		this.refs.editor.select();
-	},
-});
+	}
+}
 
+StatefulEditor.propTypes = {
+	// What is the prop type for something that can be instanciated via
+	// React.createElement?
+	Component: React.PropTypes.any.isRequired,
+	editorProps: React.PropTypes.any,
+	onFocusNext: React.PropTypes.func.isRequired,
+	onFocusPrev: React.PropTypes.func.isRequired,
+	onFocus: React.PropTypes.func.isRequired,
+	onBlur: React.PropTypes.func.isRequired,
+	isFocused: React.PropTypes.bool.isRequired,
+	value: React.PropTypes.any,
+};
+
+StatefulEditor.defaultProps = {
+	value: undef,
+	editorProps: {},
+};
 export {StatefulEditor};

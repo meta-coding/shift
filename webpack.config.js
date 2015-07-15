@@ -14,9 +14,17 @@ module.exports = {
 			{ test: /.*\.js$/, loader: 'babel-loader?stage=0' },
 		],
 	},
-	externals: {
-		'immutable': true,
-		'react': true,
-		'react-immutable-proptypes': true,
+	resolve: {
+		root: path.join(__dirname, 'deps'),
 	},
+	resolveLoader: {
+		root: path.join(__dirname, 'deps', 'node_modules'),
+	},
+	externals: [
+		{
+			'immutable': true,
+			'react': true,
+			'react-immutable-proptypes': true,
+		},
+	],
 };
