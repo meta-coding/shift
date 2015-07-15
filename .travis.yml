@@ -2,7 +2,9 @@
 language: node_js
 node_js:
   - "0.12"
-install: npm install
+install:
+  - npm install
+  - pushd deps && npm install && popd
 before_script:
   - npm run lint
   - npm test
