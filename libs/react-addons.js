@@ -20,7 +20,7 @@ declare class ReactTestUtils {
 }
 
 declare class ReactTestUtilsSimulate {
-	onClick(element: Element, eventData: ?any): void;
+	onClick(element: HTMLElement, eventData: ?any): void;
 	// Add more event handlers here as needed...
 }
 
